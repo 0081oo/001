@@ -1,5 +1,7 @@
 package com.kh.exam2;
 
+import java.util.StringTokenizer;
+
 public class Sample2 {
 
 	public static void main(String[] args) {
@@ -34,6 +36,15 @@ public class Sample2 {
 		startIdx = sb1.indexOf(find);
 		sb1.replace(startIdx, startIdx + find.length(), "StringBuilder");
 		System.out.println(sb1);
+		
+		// StringTokenizer
+		//		- 문자열을 구분 문자열로 분리하는 기능을 가진 클래스
+		StringTokenizer st = new StringTokenizer("My StringBuilder First Builder new String", " ");
+		// 분리된 문자열을 Token이라고 본다. 따라서 아래 구문은 분리된 문자열이 있다면 출력하라는 뜻
+		while(st.hasMoreTokens()) {
+			System.out.println("st.nextToken() : " + st.nextToken());
+		}
+		
 		
 	}
 
