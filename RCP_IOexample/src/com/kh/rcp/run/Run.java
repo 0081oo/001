@@ -11,10 +11,13 @@ import java.util.Random;
 public class Run {
 
 	public static void main(String[] args) {
+		RockScissorsPaper rcp = new RockScissorsPaper();
+		File f = new File("/Users/heeminchun/Desktop/RCP.txt");
+		
 		// 바위 : 1 | 가위 : 2 | 보  : 3
 		Random rand = new Random();
 		Scanner sc = new Scanner(System.in);
-		String user, computer;
+		String user;
 		int nUser, nComputer;
 		
 		
@@ -30,6 +33,7 @@ public class Run {
 			else if("보".equals(user))nUser = 3;
 			else if("exit".equals(user)) {
 				nUser = 0;
+				System.out.println("Your total Score is (win, lose, draw) : " + rcp.readResult());
 				System.exit(0);
 			}
 			else {
@@ -73,15 +77,12 @@ public class Run {
 				}
 			}
 			
-			RockScissorsPaper rcp = new RockScissorsPaper();
-			File f = new File("/Users/heeminchun/Desktop/RCP.txt");
-			
 			try {
 				if(!f.exists()) {
 					f.createNewFile();
 					System.out.println("RCP.txt is created.");
 					rcp.writeResult(win, lose, draw);
-					System.out.println("Now your score is : " + rcp.readResult());
+					System.out.println("Now your score is (win,lose,draw) : " + rcp.readResult());
 				}
 				else {
 					// 파일을 읽어와서 문자열 분리후 int로 변환해서 합 더한 뒤에 다시 write 해주기
@@ -91,14 +92,14 @@ public class Run {
 					int newLose = Integer.parseInt(newRes[1]) + lose;
 					int newDraw = Integer.parseInt(newRes[2]) + draw;
 					rcp.writeResult(newWin, newLose, newDraw);
-					System.out.println("Now your score is : " + rcp.readResult());
+					System.out.println("Now your score is (win,lose,draw): " + rcp.readResult());
 				}
 			} catch (IOException e) {
 				System.out.println("IOException Error");
 			}
 			
 		}
-
+	
 	}
 
 }

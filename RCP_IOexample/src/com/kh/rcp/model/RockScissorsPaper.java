@@ -24,10 +24,10 @@ public class RockScissorsPaper {
 				FileReader fr = new FileReader(f);
 				
 				String res = "";
-				int read;
+				int buff;
 				char[] cArr = new char[20];
-				while((read = fr.read(cArr)) != -1) {
-					res += new String(cArr, 0, read);
+				while((buff = fr.read(cArr)) != -1) {
+					res += new String(cArr, 0, buff);
 				}
 				fr.close();
 				return res;
