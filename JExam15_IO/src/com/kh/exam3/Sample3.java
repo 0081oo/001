@@ -51,6 +51,60 @@ public class Sample3 {
 		return 0;
 	}
 	
+	public static void saveDirFileList(String dir) {
+		/*
+		 *  지정한 디렉토리 안의 폴더와 파일의 목록을 파일로 만들어 출력
+		 *  숨김 파일/폴더, 일반 파일/폴더를 구분하여 저장한다.
+		 */
+		File f = new File(dir);
+		
+		if(!f.exists()) {
+			System.out.println(dir + "에 해당하는 디렉토리나 파일이 없습니다");
+		}
+		
+		File[] fList = f.listFiles();
+		String nFile ="", nFolder="", dFile="", dFolder="";
+		
+		for(int i = 0; i < fList.length; i++) {
+			// 파일이라면
+			if(fList[i].isFile()) {
+				if(fList[i].isHidden()) {
+					dFile += fList[i].getName() + ", ";
+				} else {
+					nFile += fList[i].getName() + ", ";
+				}
+			// 디렉토리라면
+			} else if(fList[i].isDirectory()){
+				if(fList[i].isHidden()) {
+					dFolder += fList[i].getName() + ", ";
+				} else {
+					nFolder += fList[i].getName() + ", "; 
+				}
+			}
+		}
+		
+		try {
+			FileWriter fw = new FileWriter("/Users/heeminchun/Desktop/list.txt");
+			fw.write(dir + "의 파일 목록\n");
+			fw.write("\t숨김 파일 목록\n");
+			fw.write("\t\t" + dFile + "\n");
+			fw.write("\t일반 파일 목록\n");
+			fw.write("\t\t" + nFile +"\n");
+			fw.write("\t숨김 폴더 목록\n");
+			fw.write("\t\t" + dFolder +"\n");
+			fw.write("\t일반 폴더 목록\n");
+			fw.write("\t\t" + nFolder+"\n");
+			
+			fw.close();
+			System.out.println(dir + "/list.txt 위치에 파일쓰기가 완료되었습니다.");
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.print("입출력 오류 발생");
+		} 
+		
+	}
+	
 	public static void main(String[] args) {
 		/*
 		 *  FileReader / FileWriter
@@ -59,6 +113,7 @@ public class Sample3 {
 		 */
 		String filename = "/Users/heeminchun/Desktop/무제.txt";
 		System.out.println(wordCount(filename, "script"));
+		saveDirFileList("/Users/heeminchun/Desktop");
 //		try {
 //			File f = new File("/Users/heeminchun/Desktop/Sample.txt");
 //			FileReader fr = new FileReader(f);
