@@ -3,6 +3,15 @@ package com.kh.exam1;
 import java.io.*;
 
 public class Sample1 {
+	
+	public static File f;
+	public static String[] getList(String path) {
+		/*
+		 *  지정한 디렉토리의 모든 파일 및 디렉토리 목록을 반환
+		 */
+		f = new File(path);
+		return f.list();
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
