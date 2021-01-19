@@ -1,5 +1,6 @@
 package com.kh.exam7;
 
+import java.awt.print.Book;
 import java.util.*;
 
 class Student{
@@ -57,6 +58,10 @@ class Student{
 		this.classId = classId;
 	}
 	
+	public String toString() {
+		return this.name + Integer.toString(classNumber);
+	}
+	
 	
 }
 
@@ -93,6 +98,15 @@ public class Sample7 {
 		ArrayList<Student> stdList = new ArrayList<>();
 		stdList.add(new Student("hm", 'F', 1, 1, 25));
 		stdList.add(new Student("aa", 'M', 1, 2, 28));
+		
+//		System.out.println(stdList);
+		
+		System.out.println(stdList.get(0).toString());
+		System.out.println(stdList.get(1).toString());
+		
+		for(int i = 0; i < stdList.size(); i++) {
+			System.out.println(stdList.get(i).toString());
+		}
 
 	}
 

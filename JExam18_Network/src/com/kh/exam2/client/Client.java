@@ -12,7 +12,8 @@ public class Client {
 			String recv = "", send = "";
 //			char[] buffer = new char[512];
 			
-			// 서버 접속용 소켓 생성
+			// 서버 접속용 소켓 생성. 127.0.0.1은 서버의 주소! (통신하고자 하는 서버의 주소)
+			// 51000도 서버가 열어두고 있는 포트이다. 
 			Socket sock = new Socket("127.0.0.1", 51000);
 			
 			// 통신용 입출력 스트림 생성
